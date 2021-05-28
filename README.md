@@ -12,7 +12,7 @@ A simple website with list of gourmet restaurant built with Node.js and Express
 ## Getting Started
 **Clone respository**
 ```
-$ git clone 
+$ git clone https://github.com/jilltu330/restaurant-list.git
 ```
 **Install by npm**
 ```
