@@ -25,10 +25,18 @@ app.get('/restaurants/:restaurant_id', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  const keyword = req.query.keyword
+  const keyword = req.query.keyword.trim()
 
-  const restaurant = restaurantList.results.filter(restaurant => {
-    const key = keyword.trim().toLowerCase()
+  const noResultNotice = `你搜尋的${keyword}沒有符合的餐廳`
+  const emptySearchNotice = '請輸入想搜尋的餐廳或分類'
+
+  if (keyword.length === 0) {
+    res.render('index', { notice: emptySearchNotice })
+    return
+  }
+
+  const restaurants = restaurantList.results.filter(restaurant => {
+    const key = keyword.toLowerCase()
     const name = restaurant.name.toLowerCase()
     const nameEN = restaurant.name_en.toLowerCase()
     const category = restaurant.category.toLowerCase()
@@ -36,7 +44,13 @@ app.get('/search', (req, res) => {
       return true
     }
   })
-  res.render('index', { restaurants: restaurant, keyword: keyword })
+
+  if (restaurants.length === 0) {
+    res.render('index', { keyword: keyword, notice: noResultNotice })
+  } else {
+    res.render('index', { restaurants: restaurants, keyword: keyword })
+  }
+
 })
 
 app.listen(port, () => {

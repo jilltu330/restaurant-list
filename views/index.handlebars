@@ -16,12 +16,21 @@
   </div>
 </div>
 
+
+
+
 <!-- restaurant list -->
 <div class="container mt-5">
+  <!-- restaurant search fail notice -->
+  <div class="row">
+    <div class="col-md-12 col-12 text-center">
+      <h4 class="notice" style="color:#CDCDCD">{{notice}}</h4>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
-
         {{#each restaurants}}
         <a href="/restaurants/{{this.id}}" class="text-secondary">
           <div class="card mb-3">
