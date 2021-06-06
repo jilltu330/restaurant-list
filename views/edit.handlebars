@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-10 col-12 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">資料修改</h5>
+          <hr>
+          <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+            <!-- 餐廳名稱 -->
+            <div class="form-group form-row">
+              <label for="name" class="col-md-4 col-form-label col-form-label-sm">餐廳名稱 :</label>
+              <input type="text" class="form-control form-control-sm" id="name" name="name" placeholder="請輸入餐廳名稱..."
+                value="{{restaurant.name}}" required>
+            </div>
+            <!-- 英文餐廳名稱 -->
+            <div class="form-group form-row">
+              <label for="name_en" class="col-md-4 col-form-label col-form-label-sm">英文名稱 :</label>
+              <input type="text" class="form-control form-control-sm" id="name_en" name="name_en"
+                placeholder="請輸入餐廳英文名稱..." value="{{restaurant.name_en}}">
+            </div>
+            <!-- 餐廳類別-->
+            <div class=" form-group form-row">
+              <label for="category" class="col-md-4 col-form-label col-form-label-sm">類別
+                :</label>
+              <input type="text" class="form-control form-control-sm" id="category" name="category"
+                placeholder="請輸入餐廳類別名稱..." value="{{restaurant.category}}" required>
+            </div>
+            <!-- 餐廳照片-->
+            <div class=" form-group form-row">
+              <label for="image" class="col-md-4 col-form-label col-form-label-sm">照片
+                :</label>
+              <input type="text" class="form-control form-control-sm" id="image" name="image" placeholder="請輸入圖片網址..."
+                value="{{restaurant.image}}" required>
+            </div>
+            <!-- 餐廳地址-->
+            <div class="form-group form-row">
+              <label for="location" class="col-md-4 col-form-label col-form-label-sm">地址
+                :</label>
+              <input type="text" class="form-control form-control-sm" id="location" name="location"
+                placeholder="請輸入地址..." value="{{restaurant.location}}" required>
+            </div>
+            <!-- 電話-->
+            <div class="form-group form-row">
+              <label for="phone" class="col-md-4 col-form-label col-form-label-sm">電話
+                :</label>
+              <input type="text" class="form-control form-control-sm" id="phone" name="phone" placeholder="請輸入電話..."
+                value="{{restaurant.phone}}" required>
+            </div>
+            <!-- google map-->
+            <div class="form-group form-row">
+              <label for="google_map" class="col-md-4 col-form-label col-form-label-sm">Google map:</label>
+              <input type="text" class="form-control form-control-sm" id="google_map" name="google_map"
+                placeholder="請輸入Google Map網址..." value="{{restaurant.google_map}}">
+            </div>
+            <!-- 評分-->
+            <div class="form-group form-row">
+              <label for="rating" class="col-md-4 col-form-label col-form-label-sm">評分
+                :</label>
+              <input type="text" class="form-control form-control-sm" id="rating" name="rating" placeholder="請輸入評分..."
+                value="{{restaurant.rating}}" required>
+            </div>
+            <!-- 簡介-->
+            <div class="form-group form-row">
+              <label for="description" class="col-md-4 col-form-label col-form-label-sm">簡介
+                :</label>
+              <input type="text" class="form-control form-control-sm" id="description" name="description"
+                placeholder="請輸入餐廳簡介..." value="{{restaurant.description}}" required>
+            </div>
+
+            <button type="submit" class="btn btn-info btn-sm">儲存</button>
+            <a class="btn btn-outline-secondary btn-sm ml-1" id="back-btn" href="/" role="button">
+              <i class="fas fa-undo-alt"></i>
+            </a>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
