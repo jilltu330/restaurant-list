@@ -29,7 +29,9 @@ app.set('view engine', 'handlebars')
 //setting static files
 app.use(express.static('public'))
 
-//route setting
+app.use(express.urlencoded({ extended: true }))
+
+// index route
 app.get('/', (req, res) => {
   Restaurant.find()
     .lean()
@@ -37,11 +39,34 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
+//new route 新增資料
+app.get('/restaurants/new', (req, res) => {
+  return res.render('new')
+})
+
+app.post('/restaurants', (req, res) => {
+  return Restaurant.create({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    rating: req.body.rating,
+    description: req.body.description,
+  })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+//show route
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
   res.render('show', { restaurant: restaurant })
 })
 
+//search route
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
 

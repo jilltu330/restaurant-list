@@ -21,14 +21,22 @@
 
 <!-- restaurant list -->
 <div class="container mt-5">
-  <!-- restaurant search fail notice -->
   <div class="row">
-    <div class="col-md-12 col-12 text-center">
+
+    <!-- restaurant search fail notice -->
+    <div class="col-md-10 col-12 text-center">
       <h4 class="notice" style="color:#CDCDCD">{{notice}}</h4>
     </div>
-  </div>
 
-  <div class="row">
+    <!-- create new -->
+    <div class="col-md-10 col-12 mx-auto">
+      <div class="d-flex justify-content-end">
+        <a class="btn btn-info mb-3 btn-sm" href="./restaurants/new" role="button"><i class="fas fa-plus"></i> 新增餐廳</a>
+      </div>
+    </div>
+
+
+    <!-- restaurant list -->
     <div class="col-md-10 col-12 mx-auto">
       <div class="card-columns">
         {{#each restaurants}}
