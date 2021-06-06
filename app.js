@@ -101,7 +101,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
 app.post('/restaurants/:id/delete', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
-    .then(todo => todo.remove())
+    .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
@@ -118,21 +118,22 @@ app.get('/search', (req, res) => {
     return
   }
 
-  const restaurants = restaurantList.results.filter(restaurant => {
-    const key = keyword.toLowerCase()
-    const name = restaurant.name.toLowerCase()
-    const nameEN = restaurant.name_en.toLowerCase()
-    const category = restaurant.category.toLowerCase()
-    if (name.includes(key) || nameEN.includes(key) || category.includes(key)) {
-      return true
-    }
+  return Restaurant.find({
+    $or: [
+      { name: { $regex: `${keyword}`, $options: 'i' } },
+      { name_en: { $regex: `${keyword}`, $options: 'i' } },
+      { category: { $regex: `${keyword}`, $options: 'i' } }
+    ]
   })
-
-  if (restaurants.length === 0) {
-    res.render('index', { keyword: keyword, notice: noResultNotice })
-  } else {
-    res.render('index', { restaurants: restaurants, keyword: keyword })
-  }
+    .lean()
+    .then(restaurants => {
+      if (restaurants.length === 0) {
+        res.render('index', { keyword: keyword, notice: noResultNotice })
+      } else {
+        res.render('index', { restaurants: restaurants, keyword: keyword })
+      }
+    })
+    .catch(error => console.log(error))
 
 })
 
