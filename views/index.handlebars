@@ -2,7 +2,7 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-      <form action="/search">
+      <form action="/restaurants/search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
@@ -22,7 +22,7 @@
     <!-- create new -->
     <div class="col-md-10 col-12 mx-auto">
       <div class="d-flex justify-content-end">
-        <a class="btn btn-info mb-3 btn-sm" href="./restaurants/new" role="button"><i class="fas fa-plus fa-fw"></i>
+        <a class="btn btn-info mb-3 btn-sm" href="/restaurants/new" role="button"><i class="fas fa-plus fa-fw"></i>
           新增餐廳</a>
       </div>
     </div>
@@ -51,11 +51,11 @@
                 </span>
 
                 <div class="buttons">
-                  <a class="btn btn-outline-info btn-sm" id="edit-btn" href="./restaurants/{{ this._id }}/edit"
+                  <a class="btn btn-outline-info btn-sm" id="edit-btn" href="/restaurants/{{ this._id }}/edit"
                     role="button">
                     <i class="far fa-edit fa-fw"></i>
                   </a>
-                  <form action="./restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+                  <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
                     <button class="btn btn-outline-danger btn-sm" id="delete-btn" type="submit">
                       <i class="far fa-trash-alt fa-fw"></i></button>
                   </form>
