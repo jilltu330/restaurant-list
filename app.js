@@ -1,6 +1,7 @@
 //required packages used in this project
 const express = require('express')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 const app = express()
 const port = 3000
 
@@ -30,6 +31,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))
 
 // index route
 app.get('/', (req, res) => {
@@ -39,7 +41,7 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
-//new route 新增資料
+//new route
 app.get('/restaurants/new', (req, res) => {
   return res.render('new')
 })
@@ -78,27 +80,27 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => {
-      restaurant.name = req.body.name,
-        restaurant.name_en = req.body.name_en,
-        restaurant.category = req.body.category,
-        restaurant.image = req.body.image,
-        restaurant.location = req.body.location,
-        restaurant.phone = req.body.phone,
-        restaurant.google_map = req.body.google_map,
-        restaurant.rating = req.body.rating,
-        restaurant.description = req.body.description,
-        restaurant.save()
+      restaurant.name = req.body.name
+      restaurant.name_en = req.body.name_en
+      restaurant.category = req.body.category
+      restaurant.image = req.body.image
+      restaurant.location = req.body.location
+      restaurant.phone = req.body.phone
+      restaurant.google_map = req.body.google_map
+      restaurant.rating = req.body.rating
+      restaurant.description = req.body.description
+      restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
 
 //delete route
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => restaurant.remove())
