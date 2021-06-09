@@ -1,15 +1,29 @@
 <!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/restaurants/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+<div class="container search-bar mt-5">
+  <div class="row d-flex justify-content-around">
+    <div class="col-md-4 col-12">
+      <div class="search-bar-inner">
+        <form action="/restaurants/search">
+          <div class="input-group">
+            <div class="input-group-append">
+              <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+            </div>
+            <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
+              value="{{keyword}}" aria-describedby="search-button">
           </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-4 col-12">
+      <form action="/restaurant/sort">
+        <div class="form-group">
+          <select id="inputSort" class="form-control">
+            <option selected>排序...</option>
+            <option>字母</option>
+            <option>類別</option>
+            <option>地區</option>
+            <option>評分</option>
+          </select>
         </div>
       </form>
     </div>
@@ -19,13 +33,6 @@
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
-    <!-- create new -->
-    <div class="col-md-10 col-12 mx-auto">
-      <div class="d-flex justify-content-end">
-        <a class="btn btn-info mb-3 btn-sm" href="/restaurants/new" role="button"><i class="fas fa-plus fa-fw"></i>
-          新增餐廳</a>
-      </div>
-    </div>
     <!-- restaurant search fail notice -->
     <div class="col-md-12 col-12 text-center">
       <h4 class="notice" style="color:#CDCDCD">{{notice}}</h4>

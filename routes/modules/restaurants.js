@@ -8,6 +8,11 @@ router.get('/new', (req, res) => {
   return res.render('new')
 })
 
+//Sort
+router.get('/sort', (req,res) =>{
+  
+})
+
 //Search
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
