@@ -3,12 +3,12 @@ const router = express.Router()
 
 const Restaurant = require('../../models/restaurant')
 
-//define restaurant route
+// define restaurant route
 router.get('/new', (req, res) => {
   return res.render('new')
 })
 
-//Search
+// Search
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
   const noResultNotice = `你搜尋的${keyword}沒有符合的餐廳`
@@ -39,14 +39,14 @@ router.get('/search', (req, res) => {
     .catch(error => console.log(error))
 })
 
-//Create
+// Create
 router.post('/', (req, res) => {
   return Restaurant.create(req.body)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
-//Detail
+// Detail
 router.get('/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
@@ -55,7 +55,7 @@ router.get('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-//Edit
+// Edit
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
@@ -75,7 +75,7 @@ router.put('/:id', (req, res) => {
     .catch(error => console.log(error))
 })
 
-//Delete
+// Delete
 router.delete('/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)

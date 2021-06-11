@@ -5,17 +5,14 @@ A simple website with list of gourmet restaurant built with Node.js and Express
 * Listing restaurants from Mongodb restaurant seed
 * Restaurant names, photos, category and ratings
 * Restaurant location and contact details with description of restaurant features
-* Search restaurant by name in both Chinese and English, also by category.
+* User can search restaurant by name in both Chinese and English, also by category.
+* User sort restaurants by name, category, location and rating
 * Create new restaurant listings
 * Edit existing restaurant listings
 * Delete existing restaurant listings
 
 ### Index page
-![This is a alt text.](2-3_S4_A6_index.png "restaurant website img")
-### Create page
-![This is a alt text.](2-3_S4_A6_create.png "restaurant website img")
-### Edit page
-![This is a alt text.](2-3_S4_A6_edit.png "restaurant website img")
+![This is a alt text.](2-3_S5_A8_index.png "restaurant website img")
 
 ## Getting Started
 **Clone respository**
@@ -45,5 +42,8 @@ http://localhost:3000/
 * Express-Handlebars (v5.3.2)
 * Bootstrap (v4.3.1)
 * Mongoose (^5.12.13)
+* method-override (3.0.0")
+* handlebars-helpers(0.10.0)
+
 
 

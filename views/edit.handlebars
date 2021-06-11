@@ -29,7 +29,7 @@
             <div class=" form-group form-row">
               <label for="image" class="col-md-4 col-form-label col-form-label-sm">照片
                 :</label>
-              <input type="text" class="form-control form-control-sm" id="image" name="image" placeholder="請輸入圖片網址..."
+              <input type="url" class="form-control form-control-sm" id="image" name="image" placeholder="請輸入圖片網址..."
                 value="{{restaurant.image}}" required>
             </div>
             <!-- 餐廳地址-->
@@ -43,21 +43,21 @@
             <div class="form-group form-row">
               <label for="phone" class="col-md-4 col-form-label col-form-label-sm">電話
                 :</label>
-              <input type="text" class="form-control form-control-sm" id="phone" name="phone" placeholder="請輸入電話..."
+              <input type="tel" class="form-control form-control-sm" id="phone" name="phone" placeholder="請輸入電話..."
                 value="{{restaurant.phone}}" required>
             </div>
             <!-- google map-->
             <div class="form-group form-row">
               <label for="google_map" class="col-md-4 col-form-label col-form-label-sm">Google map:</label>
-              <input type="text" class="form-control form-control-sm" id="google_map" name="google_map"
+              <input type="url" class="form-control form-control-sm" id="google_map" name="google_map"
                 placeholder="請輸入Google Map網址..." value="{{restaurant.google_map}}">
             </div>
             <!-- 評分-->
             <div class="form-group form-row">
               <label for="rating" class="col-md-4 col-form-label col-form-label-sm">評分
                 :</label>
-              <input type="text" class="form-control form-control-sm" id="rating" name="rating" placeholder="請輸入評分..."
-                value="{{restaurant.rating}}" required>
+              <input type="number" class="form-control form-control-sm" id="rating" name="rating" step="0.1" min="1"
+                max="5" placeholder="1.0..." value="{{restaurant.rating}}" required>
             </div>
             <!-- 簡介-->
             <div class="form-group form-row">
