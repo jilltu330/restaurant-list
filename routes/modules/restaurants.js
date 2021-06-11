@@ -39,18 +39,9 @@ router.get('/search', (req, res) => {
     .catch(error => console.log(error))
 })
 
+//Create
 router.post('/', (req, res) => {
-  return Restaurant.create({
-    name: req.body.name,
-    name_en: req.body.name_en,
-    category: req.body.category,
-    image: req.body.image,
-    location: req.body.location,
-    phone: req.body.phone,
-    google_map: req.body.google_map,
-    rating: req.body.rating,
-    description: req.body.description,
-  })
+  return Restaurant.create(req.body)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
@@ -77,15 +68,7 @@ router.put('/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(restaurant => {
-      restaurant.name = req.body.name
-      restaurant.name_en = req.body.name_en
-      restaurant.category = req.body.category
-      restaurant.image = req.body.image
-      restaurant.location = req.body.location
-      restaurant.phone = req.body.phone
-      restaurant.google_map = req.body.google_map
-      restaurant.rating = req.body.rating
-      restaurant.description = req.body.description
+      Object.assign(restaurant, req.body)
       restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
