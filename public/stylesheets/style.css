@@ -28,6 +28,14 @@ header {
   border-radius: 0 18px 18px 0;
 }
 
+.container.search-bar .form-group select {
+  border-radius: 18px 18px 18px 18px;
+  padding-top: 2px;
+  padding-bottom:2px;
+  color: #6c757d;
+  opacity: 1;
+}
+
 .form-control::placeholder {
   color: #aaaaaa;
   font-size: 0.8rem;

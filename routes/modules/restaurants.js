@@ -8,16 +8,12 @@ router.get('/new', (req, res) => {
   return res.render('new')
 })
 
-//Sort
-router.get('/sort', (req,res) =>{
-  
-})
-
 //Search
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword.trim()
   const noResultNotice = `你搜尋的${keyword}沒有符合的餐廳`
   const emptySearchNotice = '請輸入想搜尋的餐廳或分類'
+  const sortBy = req.query.sortBy || '_id'
 
   if (keyword.length === 0) {
     res.render('index', { notice: emptySearchNotice })
@@ -32,11 +28,12 @@ router.get('/search', (req, res) => {
     ]
   })
     .lean()
+    .sort(sortBy)
     .then(restaurants => {
       if (restaurants.length === 0) {
-        res.render('index', { keyword: keyword, notice: noResultNotice })
+        res.render('index', { keyword, notice: noResultNotice })
       } else {
-        res.render('index', { restaurants: restaurants, keyword: keyword })
+        res.render('index', { restaurants, keyword, sortBy })
       }
     })
     .catch(error => console.log(error))
