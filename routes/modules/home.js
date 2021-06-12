@@ -4,7 +4,7 @@ const router = express.Router()
 const Restaurant = require('../../models/restaurant')
 
 router.get('/', (req, res) => {
-  const sortBy = req.query.sortBy || '_id'
+  const sortBy = req.query.sortBy || '-_id'
   Restaurant.find()
     .lean()
     .sort(sortBy)

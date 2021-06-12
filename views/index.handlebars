@@ -16,11 +16,11 @@
       <div class="col-md-4 col-12">
         <div class="form-group mt-3">
           <select name="sortBy" id="inputSort" class="form-control" onchange="action='';submit();">
-            <option value="_id" selected>排序...</option>
-            <option value="name" {{#if (eq sortBy 'name' )}}selected {{/if}}>名稱</option>
+            <option value="-_id" selected>上架時間: 最新</option>
+            <option value="-rating" {{#if (eq sortBy '-rating' )}} selected {{/if}}>評分：高到低</option>
             <option value="category" {{#if (eq sortBy 'category' )}} selected {{/if}}>類別</option>
             <option value="location" {{#if (eq sortBy 'location' )}} selected {{/if}}>地區</option>
-            <option value="-rating" {{#if (eq sortBy '-rating' )}} selected {{/if}}>評分</option>
+            <option value="name" {{#if (eq sortBy 'name' )}}selected {{/if}}>名稱</option>
           </select>
         </div>
       </div>
